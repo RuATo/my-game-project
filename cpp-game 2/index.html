@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Block Programming UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <main class="workspace-layout">
+      <section class="editor-panel panel">
+        <header class="panel-header">
+          <div class="panel-title-wrap">
+            <span class="panel-icon">📝</span>
+            <h2>エディタエリア</h2>
+          </div>
+          <button id="clearWorkspaceBtn" class="ghost-mini-btn" type="button">クリア</button>
+        </header>
+
+        <div id="workspace" class="workspace" aria-label="editor area">
+          <div class="workspace-drop-hint">右側からブロックをドラッグしてください</div>
+        </div>
+
+        <div class="action-row">
+          <button id="runBtn" class="primary-btn" type="button">▶ 実行する</button>
+          <button id="saveCppBtn" class="secondary-btn" type="button">.cppで保存する</button>
+        </div>
+      </section>
+
+      <aside class="sidebar-column">
+        <section class="panel palette-panel">
+          <header class="panel-header slim">
+            <div class="panel-title-wrap">
+              <span class="panel-icon">🧩</span>
+              <h2>命令文ブロック一覧</h2>
+            </div>
+          </header>
+
+          <div class="palette-scroll">
+            <div class="block-group">
+              <div class="group-title">📤 入出力</div>
+
+              <div class="palette-block palette-cout" draggable="true" data-block-type="cout">
+                <span class="bar purple"></span>
+                <span class="code-inline">cout &lt;&lt; <span class="slot-visual">[text]</span> &lt;&lt; endl;</span>
+              </div>
+
+              <!-- text block は data-text-value だけを正本にする -->
+              <div class="palette-block palette-text" draggable="true" data-block-type="text" data-text-value=" Hello">
+                <span class="bar green"></span>
+                <span class="code-inline"></span>
+              </div>
+            </div>
+
+            <div class="block-group muted-group">
+              <div class="group-title">🔁 制御構造</div>
+              <div class="dummy-block"><span class="bar yellow"></span><span>if (condition) { }</span></div>
+              <div class="dummy-block"><span class="bar yellow"></span><span>else { }</span></div>
+              <div class="dummy-block"><span class="bar yellow"></span><span>for (i = 0; i &lt; n; i++) { }</span></div>
+              <div class="dummy-block"><span class="bar yellow"></span><span>while (condition) { }</span></div>
+            </div>
+
+            <div class="block-group muted-group">
+              <div class="group-title">📊 変数・演算</div>
+              <div class="dummy-block"><span class="bar orange"></span><span>int variable = 0;</span></div>
+              <div class="dummy-block"><span class="bar orange"></span><span>double variable = 0.0;</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel result-panel">
+          <header class="panel-header slim dark">
+            <div class="panel-title-wrap dark-title">
+              <span class="panel-icon">🖥️</span>
+              <h2>出力結果</h2>
+            </div>
+          </header>
+          <div class="result-box">
+            <pre id="resultOutput">まだ実行していません。
+右側からブロックを追加してください。</pre>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script type="module" src="src/js/main.js"></script>
+</body>
+</html>
