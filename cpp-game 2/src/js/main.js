@@ -1,3 +1,7 @@
+#Ha
+#Line 1-3: ギットハブの例として追加した。
+#2026/06/10
+
 let engineModule = null;
 
 async function loadEngine() {
